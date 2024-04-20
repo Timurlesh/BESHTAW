@@ -5,7 +5,7 @@ using UnityEngine;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private float heartvalue;
-
+    public GameObject VR;
     private void Start()
     {
     
@@ -16,6 +16,7 @@ public class Heart : MonoBehaviour
         if(collision.tag == "Player")
         {
             collision.GetComponent<Health>().addHealth(heartvalue);
+            Instantiate(VR, transform.position, transform.rotation);
             Destroy(gameObject);
 
         }
