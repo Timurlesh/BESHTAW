@@ -5,6 +5,7 @@ using UnityEngine;
 public class trap : MonoBehaviour
 {
     [SerializeField] private float heartvalue;
+    public GameObject VR;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class trap : MonoBehaviour
             if (collision.GetComponent<Player_Control>().CanDamage == true)
             {
                 collision.GetComponent<Health>().TakeDamage(heartvalue);
+                Instantiate(VR, transform.position, transform.rotation);
             }
             
 

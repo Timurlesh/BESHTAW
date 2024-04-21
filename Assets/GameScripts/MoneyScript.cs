@@ -20,9 +20,13 @@ public class MoneyScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            MoneySchet.coin += moneyx2.moneyplus;
+            if (F.moneytime > 0)
+            {
+                MoneySchet.coin += 1;
+            }
+            MoneySchet.coin += 1;
             Instantiate(VR, transform.position, transform.rotation);
-;            Destroy(gameObject);
+;           Destroy(gameObject);
         }
     }
 }

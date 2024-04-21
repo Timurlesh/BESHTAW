@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float startingHealth;
     public float currentHealth { get; private set; }
+    private int God;
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -18,7 +19,8 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            gameObject.GetComponent<Player_Control>().animator.Play("damaged");
+            God = 3;
+            
         }
         else
         {
@@ -32,22 +34,35 @@ public class Health : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "DopHeart")
-        {
-            startingHealth += 1;
-            if (currentHealth < startingHealth)
-            {
-                currentHealth += 1;
-            }
-        }
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
         TakeDamage(1);
+        }
+        if (God > 0)
+        {
+            StartCoroutine(wait(1));
+        }
+        else
+        {
+            gameObject.GetComponent<Player_Control>().CanDamage = true;
+        }
+    }
+
+    private IEnumerator wait(float _time)
+    {
+        yield return new WaitForSeconds( _time);
+        God -= 1;
+        if (God == 0)
+        {
+            gameObject.GetComponent<Player_Control>().CanDamage = true;
+        }
+        else
+        {
+            gameObject.GetComponent<Player_Control>().CanDamage = false;
+            gameObject.GetComponent<Player_Control>().animator.Play("damaged");
+
         }
     }
 }
