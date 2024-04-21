@@ -6,6 +6,7 @@ public class trap : MonoBehaviour
 {
     [SerializeField] private float heartvalue;
     public GameObject VR;
+    [SerializeField] private AudioSource mainSound;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class trap : MonoBehaviour
             {
                 collision.GetComponent<Health>().TakeDamage(heartvalue);
                 Instantiate(VR, transform.position, transform.rotation);
+                mainSound.Play();
             }
             
 

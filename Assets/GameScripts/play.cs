@@ -9,4 +9,8 @@ public class play : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

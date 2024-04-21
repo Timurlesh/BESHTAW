@@ -34,7 +34,19 @@ public class vibor : MonoBehaviour
     }
     public void Loadlevel()
     {
-        SceneManager.LoadScene("lvl1");
+        if (pers_number == 1)
+        {
+            SceneManager.LoadScene("lvl1");
+        }
+        else if (pers_number == 2)
+        {
+            SceneManager.LoadScene("lvl2");
+        }
+        else
+        {
+
+        }
+        
     }
 
     void Update()

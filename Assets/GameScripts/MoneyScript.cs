@@ -7,6 +7,8 @@ public class MoneyScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject VR;
+    [SerializeField] private AudioSource mainSound;
+
     void Start()
     {
     }
@@ -27,6 +29,7 @@ public class MoneyScript : MonoBehaviour
             MoneySchet.coin += 1;
             Instantiate(VR, transform.position, transform.rotation);
 ;           Destroy(gameObject);
+            mainSound.Play();
         }
     }
 }

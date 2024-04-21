@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class X2shet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject End;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        End.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            End.SetActive(true);
+        }
     }
 }

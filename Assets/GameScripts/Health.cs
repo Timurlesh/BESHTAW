@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(4);
         }
     }
 
@@ -52,7 +53,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator wait(float _time)
     {
-        yield return new WaitForSeconds( _time);
+        yield return new WaitForSeconds(_time);
         God -= 1;
         if (God == 0)
         {
